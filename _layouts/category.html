@@ -1,24 +1,22 @@
 ---
-layout: page
-# The Category layout
+layout: default
 ---
+{% assign card = site.category_cards | where: "slug", page.cat_slug | first %}
+<section class="hero">
+  <h1 class="hero-title">{% if card %}{{ card.icon }} {{ card.title }}{% else %}{{ page.title }}{% endif %}</h1>
+  {% if card %}<p class="hero-tagline"><em>{{ card.desc }}</em></p>{% endif %}
+</section>
 
-{% include lang.html %}
-
-<div id="page-category">
-  <h1 class="ps-lg-2">
-    <i class="far fa-folder-open fa-fw text-muted"></i>
-    {{ page.title }}
-    <span class="lead text-muted ps-2">{{ page.posts | size }}</span>
-  </h1>
-
-  <ul class="content ps-0">
-    {% for post in page.posts %}
-      <li class="d-flex justify-content-between px-md-3">
+{% assign posts = site.posts | where: "category", page.cat_slug %}
+{% if posts.size > 0 %}
+  <ul class="post-list">
+    {% for post in posts %}
+      <li class="post-item">
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
         <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-        <span class="dash flex-grow-1"></span>
-        {% include datetime.html date=post.date class='text-muted small text-nowrap' lang=lang %}
       </li>
     {% endfor %}
   </ul>
-</div>
+{% else %}
+  <p class="empty-hint">该分类下暂无文章，往 <code>_posts/</code> 目录上传 Markdown 即可。</p>
+{% endif %}
