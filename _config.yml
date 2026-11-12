@@ -1,5 +1,5 @@
 title: "Linux Kernel Notes"
-description: "Linux 内核、驱动开发与虚拟化技术"
+description: "Linux 内核、驱动开发 SOC"
 url: "https://cjmjy.github.io"
 baseurl: ""
 lang: zh-CN
@@ -10,6 +10,7 @@ permalink: /posts/:title/
 plugins:
   - jekyll-feed
   - jekyll-sitemap
+  - jekyll-seo-tag
 exclude:
   - README.md
   - Gemfile
