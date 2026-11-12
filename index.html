@@ -1,24 +1,40 @@
 ---
 layout: default
-title: Blog
+title: 首页
 ---
-
-<section class="hero">
-  <h1 class="hero-title">{{ site.title }}</h1>
-  <p class="hero-tagline"><em>{{ site.tagline }}</em></p>
+<section class="intro">
+  <h1>Linux 内核技术博客</h1>
+  <p>Linux kernel development &amp; embedded systems</p>
 </section>
-
-<section class="card-grid">
-  {% for card in site.category_cards %}
-    {% assign posts_in_cat = site.posts | where: "category", card.slug %}
-    {% assign count = posts_in_cat | size %}
-    <a class="category-card" href="{{ '/categories/' | append: card.slug | append: '/' | relative_url }}">
-      <div class="card-head">
-        <span class="card-icon">{{ card.icon }}</span>
-        <h2 class="card-title">{{ card.title }}</h2>
-      </div>
-      <p class="card-desc">{{ card.desc }}</p>
-      <p class="card-count">{{ count }} 篇文章</p>
+<section>
+  <h2 class="section-title">技术专题</h2>
+  {% assign groups = site.posts | group_by_exp: 'post', 'post.categories.first' | sort: 'name' %}
+  <div class="category-grid">
+  {% for group in groups %}
+    {% assign name = group.name %}
+    {% assign icon = '📚' %}
+    {% assign desc = '技术文章与学习笔记' %}
+    {% case name %}
+      {% when 'ARM-SMMU' %}{% assign icon = '🧠' %}{% assign desc = 'ARM64、SMMU、IOMMU、DMA' %}
+      {% when 'DRM-GPU' %}{% assign icon = '🖥️' %}{% assign desc = 'DRM/KMS、GEM、GPU 驱动' %}
+      {% when 'PCIe-DMA' %}{% assign icon = '🔌' %}{% assign desc = 'PCIe、BAR、MSI-X、DMA API' %}
+      {% when '内存管理' %}{% assign icon = '💾' %}{% assign desc = '页表、mmap、SLUB' %}
+      {% when '内核调试' %}{% assign icon = '🛠️' %}{% assign desc = 'crash、kdump、ftrace' %}
+      {% when 'QEMU' %}{% assign icon = '⚙️' %}{% assign desc = '虚拟化与驱动实验' %}
+    {% endcase %}
+    <a class="category-card" href="{{ '/categories/' | relative_url }}?name={{ name | url_encode }}">
+      <h3>{{ icon }} {{ name | escape }}</h3>
+      <p>{{ desc }}</p>
+      <span class="muted">{{ group.items.size }} 篇文章</span>
     </a>
   {% endfor %}
+  </div>
+</section>
+<section class="recent">
+  <h2 class="section-title">最新文章</h2>
+  <ul class="post-list">
+  {% for post in site.posts limit: 8 %}
+    <li><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a><time>{{ post.date | date: '%Y-%m-%d' }}</time></li>
+  {% endfor %}
+  </ul>
 </section>

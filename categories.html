@@ -1,0 +1,12 @@
+---
+layout: default
+title: 分类
+permalink: /categories/
+---
+<h1 id="category-title">全部分类</h1>
+<p class="muted">选择首页分类卡片，查看对应的技术文章。</p>
+<div id="article-list" class="post-list" aria-live="polite"></div>
+<script id="posts-data" type="application/json">[
+{% for post in site.posts %}{"title": {{ post.title | jsonify }}, "url": {{ post.url | relative_url | jsonify }}, "date": {{ post.date | date: '%Y-%m-%d' | jsonify }}, "categories": {{ post.categories | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}
+]</script>
+<script src="{{ '/assets/js/categories.js' | relative_url }}" defer></script>
