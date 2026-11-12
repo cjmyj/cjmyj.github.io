@@ -66,8 +66,8 @@ highlighter: rouge
 permalink: /posts/:title/
 
 # 文章分页（blog 列表页）
-paginate: 10
-paginate_path: "/blog/page:num/"
+#paginate: 10
+#paginate_path: "/blog/page:num/"
 
 # 默认 front matter：让 _posts 里的文章默认使用 post 布局
 defaults:
