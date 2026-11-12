@@ -1,12 +1,12 @@
 # ===================== 站点基本信息（改成你自己的） =====================
-title: "Xiaolei's Blog"
+title: "chengjian's Blog"
 tagline: "Linux kernel development & embedded systems"
-author: "Xiaolei Wang"
+author: "chengjian"
 description: "Linux 内核开发、嵌入式系统、驱动与子系统学习笔记"
-url: "https://你的用户名.github.io"   # 部署后改成你的 GitHub Pages 地址
+url: "https://cjmyj.github.io"   # 部署后改成你的 GitHub Pages 地址
 baseurl: ""                          # 若项目名为 你的用户名.github.io 留空；若为普通仓库写 "/仓库名"
 lang: zh-CN
-timezone: Asia/Shanghai
+timezone: Asia/Chengdu
 
 # ===================== 导航栏（对应参考图 about / blog / life / cv） =====================
 navigation:

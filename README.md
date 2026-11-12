@@ -35,7 +35,7 @@ jekyll-blog/
 ### 1. 新建 GitHub 仓库
 
 - 登录 GitHub，New repository。
-- 仓库名必须取 **`你的用户名.github.io`**（例如 `wangxiaolei12.github.io`），这样访问地址就是 `https://你的用户名.github.io/`。
+- 仓库名必须取 **`你的用户名.github.io`**，这样访问地址就是 `https://你的用户名.github.io/`。
   - 若用普通仓库名（如 `blog`），需要在 `_config.yml` 里把 `baseurl` 改成 `/blog`。
 - 设为 **Public**，不要初始化 README。
 
