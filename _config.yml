@@ -87,6 +87,5 @@ exclude:
   - .github
 
 # 插件（GitHub Pages 已内置以下常用插件）
-plugins:
-  - jekyll-paginate
-  - jekyll-feed
+#plugins:
+
