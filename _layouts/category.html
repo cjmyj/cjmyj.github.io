@@ -1,0 +1,22 @@
+---
+layout: default
+---
+{% assign card = site.category_cards | where: "slug", page.cat_slug | first %}
+<section class="hero">
+  <h1 class="hero-title">{% if card %}{{ card.icon }} {{ card.title }}{% else %}{{ page.title }}{% endif %}</h1>
+  {% if card %}<p class="hero-tagline"><em>{{ card.desc }}</em></p>{% endif %}
+</section>
+
+{% assign posts = site.posts | where: "category", page.cat_slug %}
+{% if posts.size > 0 %}
+  <ul class="post-list">
+    {% for post in posts %}
+      <li class="post-item">
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p class="empty-hint">该分类下暂无文章，往 <code>_posts/</code> 目录上传 Markdown 即可。</p>
+{% endif %}

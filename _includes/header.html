@@ -1,0 +1,15 @@
+<header class="site-header">
+  <div class="container">
+    <div class="site-author">
+      <span class="author-brace">{{ '{' }}</span> {{ site.author }} <span class="author-brace">{{ '}' }}</span>
+    </div>
+    <nav class="site-nav">
+      <span class="nav-avatar">🐧</span>
+      {% for item in site.navigation %}
+        {% assign active = false %}
+        {% if page.url == item.url %}{% assign active = true %}{% endif %}
+        <a href="{{ item.url | relative_url }}" class="{% if active %}active{% endif %}">{{ item.title }}</a>
+      {% endfor %}
+    </nav>
+  </div>
+</header>

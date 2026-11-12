@@ -1,0 +1,93 @@
+# ===================== 站点基本信息（改成你自己的） =====================
+title: "Xiaolei's Blog"
+tagline: "Linux kernel development & embedded systems"
+author: "Xiaolei Wang"
+description: "Linux 内核开发、嵌入式系统、驱动与子系统学习笔记"
+url: "https://你的用户名.github.io"   # 部署后改成你的 GitHub Pages 地址
+baseurl: ""                          # 若项目名为 你的用户名.github.io 留空；若为普通仓库写 "/仓库名"
+lang: zh-CN
+timezone: Asia/Shanghai
+
+# ===================== 导航栏（对应参考图 about / blog / life / cv） =====================
+navigation:
+  - title: About
+    url: /about/
+  - title: Blog
+    url: /blog/
+  - title: Life
+    url: /life/
+  - title: CV
+    url: /cv/
+
+# ===================== 首页分类卡片（对应参考图九宫格） =====================
+# slug 必须和文章 front matter 里的 `category:` 完全一致；文章数量由 Jekyll 自动统计。
+# icon 用 emoji；title 卡片标题；desc 卡片描述。
+category_cards:
+  - slug: camera-media
+    icon: "📷"
+    title: "Camera / Media"
+    desc: "Camera sensor, ISP, VPU, DRM, MIPI CSI-2, Linux Media 子系统"
+  - slug: system-internals
+    icon: "⚙️"
+    title: "System Internals"
+    desc: "调度器、内存管理、中断、softirq、kdump、设备模型"
+  - slug: drm-gpu
+    icon: "🖥️"
+    title: "DRM / GPU"
+    desc: "DRM/KMS 显示流水线、GEM 内存管理、GPU Scheduler、DMA-fence"
+  - slug: arm-arch
+    icon: "🏗️"
+    title: "ARM Architecture"
+    desc: "ARMv8-A, AArch64 内存管理, Cortex-A55/A72 TRM"
+  - slug: mm
+    icon: "🧠"
+    title: "内存子系统"
+    desc: "物理内存、虚拟内存、伙伴系统、SLUB、mmap、vmalloc"
+  - slug: network
+    icon: "🌐"
+    title: "网络子系统"
+    desc: "TSN 时间敏感网络、CBS/TAPRIO/ETF 调度、帧抢占、PTP 时钟"
+  - slug: scheduler
+    icon: "🗓️"
+    title: "进程调度"
+    desc: "CFS/EEVDF、RT 调度、SMP 负载均衡、preempt、vruntime、bandwidth"
+  - slug: userspace-tools
+    icon: "🔧"
+    title: "Userspace Tools"
+    desc: "perf、ftrace、crash 等调试分析工具原理与使用"
+  - slug: interview
+    icon: "📝"
+    title: "Interview"
+    desc: "BSP/内核开发面试题、算法题"
+
+# ===================== Jekyll 构建配置 =====================
+markdown: kramdown
+highlighter: rouge
+permalink: /posts/:title/
+
+# 文章分页（blog 列表页）
+paginate: 10
+paginate_path: "/blog/page:num/"
+
+# 默认 front matter：让 _posts 里的文章默认使用 post 布局
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
+# 排除无需发布的文件
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
+  - .git
+  - .github
+
+# 插件（GitHub Pages 已内置以下常用插件）
+plugins:
+  - jekyll-paginate
+  - jekyll-feed
+  - jekyll-seo-tag

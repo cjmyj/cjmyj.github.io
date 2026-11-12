@@ -1,12 +1,24 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的主页</title>
-</head>
-<body>
-    <h1>Hello，这是我的github pages网站</h1>
-    <p>访问地址：https://cjmyj.github.io/</p>
-</body>
-</html>
+---
+layout: default
+title: Blog
+---
+
+<section class="hero">
+  <h1 class="hero-title">{{ site.title }}</h1>
+  <p class="hero-tagline"><em>{{ site.tagline }}</em></p>
+</section>
+
+<section class="card-grid">
+  {% for card in site.category_cards %}
+    {% assign posts_in_cat = site.posts | where: "category", card.slug %}
+    {% assign count = posts_in_cat | size %}
+    <a class="category-card" href="{{ '/categories/' | append: card.slug | append: '/' | relative_url }}">
+      <div class="card-head">
+        <span class="card-icon">{{ card.icon }}</span>
+        <h2 class="card-title">{{ card.title }}</h2>
+      </div>
+      <p class="card-desc">{{ card.desc }}</p>
+      <p class="card-count">{{ count }} 篇文章</p>
+    </a>
+  {% endfor %}
+</section>
