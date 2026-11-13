@@ -3,7 +3,7 @@ description: "Linux 内核、驱动开发 SOC"
 url: "https://cjmjy.github.io"
 baseurl: ""
 lang: zh-CN
-timezone: Asia/Shanghai
+timezone: Asia/成都
 markdown: kramdown
 highlighter: rouge
 permalink: /posts/:title/
